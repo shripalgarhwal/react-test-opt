@@ -5,7 +5,7 @@ import { IFormProps } from "./financial-home"
 
 export interface IFinancialForm {
   submitForm: (event: any) => void;
-  getOldData: () => void;
+  getOldData: (data: any) => void;
   previousDetails: IFormProps;
   newDetails: IFormProps;
 }
@@ -17,7 +17,10 @@ const FinancialForm: React.StatelessComponent<IFinancialForm> = ({submitForm, ge
           <div className="col-sx-6  col-sm-6 col-md-6" />
           <div className="col-sx-6 col-sm-6 col-md-6 mt-3 text-left">
             <button className="btn btn-primary"
-                    onClick={getOldData}>Get Privious Data</button>
+                    onClick={() => {
+                      let {netAmount, transferedAmound, comment} = previousDetails;
+                      getOldData({netAmount, transferedAmound, comment});
+                    }}>Get Privious Data</button>
           </div>
         </div>
         <div className="row row-no-gutters">

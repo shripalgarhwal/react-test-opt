@@ -67,15 +67,17 @@ class FinancialHome extends React.Component<any, IFinancialDetail> {
         this.setState({ othNewDetails: dataObj});
         event.preventDefault();
     }
-    getFinancialOldData() {
-        let dataObj: IFormProps = Object.assign({}, this.state.fnPreviousDetails);
+    getFinancialOldData(oldData: any) {
+        let dataObj: IFormProps = Object.assign({}, this.state.fnNewDetails, oldData);
         this.setState({ fnNewDetails: {...dataObj}});
     }
-    getNonFinancialOldData() {
-        this.setState({ nonFnNewDetails: {...this.state.nonFnPreviousDetails}});
+    getNonFinancialOldData(oldData: any) {
+        let dataObj: IFormProps = Object.assign({}, this.state.nonFnNewDetails, oldData);
+        this.setState({ nonFnNewDetails: {...dataObj}});
     }
-    getOthersOldData() {
-        this.setState({ othNewDetails: {...this.state.othPreviousDetails}});
+    getOthersOldData(oldData: any) {
+        let dataObj: IFormProps = Object.assign({}, this.state.othNewDetails, oldData);
+        this.setState({ othNewDetails: {...dataObj}});
     }
     render () {
         return  <div className="">
